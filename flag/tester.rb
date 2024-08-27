@@ -6,8 +6,10 @@ class TestWindow < Gosu::Window
   def initialize
     super Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT
 
-    @card = Card::Presenter.new('A', 'hart')
-    @card.set_position(100, 100)
+    @x = 100
+    @y = 100
+    @flag = Flag::Presenter.new
+    @flag.set_position(@x, @y)
   end
 
   def update
@@ -15,22 +17,18 @@ class TestWindow < Gosu::Window
   end
 
   def draw
-    @card.draw
+    @flag.draw
   end
 
   private
 
   def handle_key_press
     if Gosu.button_down?(Gosu::KB_LEFT)
-      @card.turn_left
+      @flag.set_position(@x - 100, @y)
     elsif Gosu.button_down?(Gosu::KB_RIGHT)
-      @card.turn_right
+      @flag.set_position(@x + 100, @y)
     elsif Gosu.button_down?(Gosu::KB_UP)
-      @card.turn_fore
-    elsif Gosu.button_down?(Gosu::KB_S)
-      @card.resize_small
-    elsif Gosu.button_down?(Gosu::KB_M)
-      @card.resize_middle
+      @flag.set_position(@x, @y)
     end
   end
 end

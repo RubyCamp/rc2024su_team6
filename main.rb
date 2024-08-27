@@ -1,12 +1,10 @@
 require 'gosu'
 require_relative 'card'
+require_relative 'config'
 
 class GameWindow < Gosu::Window
-  WIDTH = 800
-  HEIGHT = 600
-
   def initialize
-    super WIDTH, HEIGHT
+    super Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT
     self.caption = 'My First Game'
   end
 
