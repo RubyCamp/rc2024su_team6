@@ -22,7 +22,7 @@ module Scenes
       # 1フレーム分の描画処理
       def draw
         @bg_img.draw(0, 0, 0)
-        draw_text("BLACK LINE", :center, 200, font: :title, color: :red,size: 100)
+        draw_text("BLACK LINE", :center, 200, font: :title, color: :black)
         draw_text("Push SPACE Key to start", :center, 350)
       end
     end

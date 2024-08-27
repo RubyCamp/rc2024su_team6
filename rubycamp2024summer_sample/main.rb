@@ -17,7 +17,7 @@ class MainWindow < Gosu::Window
   # コンストラクタ
   def initialize
     super WIDTH, HEIGHT, FULL_SCREEN
-    self.caption = 'RubyCamp2024Summer Example'
+    self.caption = 'RubyCamp2024Summer team6'
 
     @scene_manager = Scenes::Manager.instance
     @scene_manager.add(:title, Scenes::Title::Director.new)
