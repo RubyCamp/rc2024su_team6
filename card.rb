@@ -19,26 +19,26 @@ class Card
   end
 
   # カードを左に向ける
-  def turnLeft
+  def turn_left
   end
 
   # カードを右に向ける
-  def turnRight
+  def turn_right
   end
 
   # カードを正面に向ける
-  def turnFore
+  def turn_fore
   end
 
   # カードを中位のサイズにする
-  def resizeMiddle
+  def resize_middle
   end
 
   # カードを小さいサイズにする
-  def resizeSmall
+  def resize_small
   end
 
-  def setPosition(x, y)
+  def set_position(x, y)
     @x = x
     @y = y
   end

@@ -10,8 +10,8 @@ class GameWindow < Gosu::Window
     self.caption = 'My First Game'
 
     @card = Card.new 'A', 'hart'
-    @card.setPosition(100, 100)
-    # @card.turnLeft とかすると、左に向くようにしてほしい
+    @card.set_position(100, 100)
+    # @card.turn_left とかすると、左に向くようにしてほしい
   end
 
   def update
