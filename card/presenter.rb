@@ -1,5 +1,8 @@
+require_relative '../modules/clickable'
+
 module Card
   class Presenter
+    include Clickable
     def initialize(number, signal)
       @x = 0
       @y = 0
@@ -7,6 +10,16 @@ module Card
       @scale = 1
 
       @image = Gosu::Image.new('assets/images/rect.png')
+    end
+
+    def update(opt = {})
+      mouse_position opt
+      handle_click
+
+      return unless @clicked
+
+      p 'clicked!'
+      p @mouse_x
     end
 
     def draw
@@ -42,6 +55,15 @@ module Card
     def set_position(x, y)
       @x = x
       @y = y
+    end
+
+    private
+
+    def mouse_over?
+      width = @image.width * @scale
+      height = @image.height * @scale
+
+      @x - width / 2 < @mouse_x && @mouse_x < @x + width / 2 && @y - height / 2 < @mouse_y && @mouse_y < @y + height / 2
     end
   end
 end

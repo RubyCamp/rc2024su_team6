@@ -13,6 +13,13 @@ module Card
 
     def update
       handle_key_press
+
+      opt = {
+        mx: mouse_x,
+        my: mouse_y
+      }
+
+      @card.update opt
     end
 
     def draw
