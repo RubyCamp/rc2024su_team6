@@ -6,7 +6,7 @@ module Scenes
       # コンストラクタ
       def initialize
         super
-        @bg_img = Gosu::Image.new("images/bg_rule.png", tileable: true)
+        @bg_img = Gosu::Image.("images/bg_title.png", tileable: true)
         @bgm = load_bgm("bgm1.mp3", 0.3)
       end
 
@@ -23,7 +23,7 @@ module Scenes
       # 1フレーム分の描画処理
       def draw
         @bg_img.draw(0, 0, 0)
-        draw_text("BLACK LINE", :center, 200, font: :title, color: :black)
+        draw_text("", :center, 100, font: :title, color: :black)
         draw_text("Push SPACE Key to start", :center, 350)
       end
     end
