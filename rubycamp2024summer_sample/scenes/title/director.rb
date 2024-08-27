@@ -14,7 +14,7 @@ module Scenes
         @bgm.play if @bgm && !@bgm.playing?
         # スペースキー押下でゲーム本編シーンへ切り替えを行う
         if key_push?(Gosu::KB_SPACE)
-          transition(:game)
+          transition(:rule)
           @bgm.stop if @bgm && @bgm.playing?
         end
       end
