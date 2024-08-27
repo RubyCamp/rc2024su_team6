@@ -35,6 +35,8 @@ module Card
         @card.resize_small
       elsif Gosu.button_down?(Gosu::KB_M)
         @card.resize_middle
+      elsif Gosu.button_down?(Gosu::KB_L)
+        @card.resize_large
       end
     end
   end

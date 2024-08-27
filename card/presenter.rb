@@ -41,14 +41,19 @@ module Card
       @angle = 0
     end
 
+    # カードを小さいサイズにする
+    def resize_small
+      @scale = 0.5
+    end
+
     # カードを中位のサイズにする
     def resize_middle
       @scale = 1
     end
 
-    # カードを小さいサイズにする
-    def resize_small
-      @scale = 0.5
+    # カードを大きいサイズにする
+    def resize_large
+      @scale = 1.2
     end
 
     # カードの座標を変更する
