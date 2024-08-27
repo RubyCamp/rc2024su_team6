@@ -23,7 +23,7 @@ module Flag
     end
 
     def draw
-      @image.draw @x, @y, 0
+      @image.draw @x, @y, 0, 1, 1, Gosu::Color::RED
     end
 
     def set_position(x, y)
