@@ -16,6 +16,8 @@ module Flag
       super
 
       handle_key_press
+
+      @flag.update @opt
     end
 
     def draw
