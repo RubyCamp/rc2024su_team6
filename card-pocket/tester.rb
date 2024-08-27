@@ -1,11 +1,11 @@
 require 'gosu'
 require_relative 'presenter'
-require_relative '../config'
+require_relative '../test_window'
 
 module CardPocket
-  class TestWindow < Gosu::Window
+  class Tester < TestWindow
     def initialize
-      super Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT
+      super
 
       @x = 100
       @y = 100
@@ -14,6 +14,7 @@ module CardPocket
     end
 
     def update
+      super
       handle_key_press
     end
 
@@ -32,6 +33,6 @@ module CardPocket
     end
   end
 
-  window = TestWindow.new
+  window = Tester.new
   window.show
 end

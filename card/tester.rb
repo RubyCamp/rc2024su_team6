@@ -1,25 +1,21 @@
 require 'gosu'
 require_relative 'presenter'
-require_relative '../config'
-
+require_relative '../test_window'
 module Card
-  class TestWindow < Gosu::Window
+  class Tester < TestWindow
     def initialize
-      super Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT
+      super
 
       @card = Presenter.new('A', 'hart')
       @card.set_position(100, 100)
     end
 
     def update
+      super
+
       handle_key_press
 
-      opt = {
-        mx: mouse_x,
-        my: mouse_y
-      }
-
-      @card.update opt
+      @card.update @opt
     end
 
     def draw
@@ -43,6 +39,6 @@ module Card
     end
   end
 
-  window = TestWindow.new
+  window = Tester.new
   window.show
 end
