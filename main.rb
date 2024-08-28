@@ -18,7 +18,6 @@ class GameWindow < Gosu::Window
     CARD_NUM.times do |i|
       @cards << Card::Presenter.new('A', 'hart')
       @cards[i].set_position(x, y)
-      p 'init card'
       x += 100
     end
 
@@ -51,6 +50,7 @@ class GameWindow < Gosu::Window
       my: mouse_y
     }
     @cards.each { |card| card.update(opt) }
+    @pockets.each { |pocket| pocket.update(opt) }
 
     @cards.each do |card|
       next unless card.clicked?
@@ -59,6 +59,15 @@ class GameWindow < Gosu::Window
       @current_card = card
       @current_card.resize_large
       break
+    end
+
+    @pockets.each do |pocket|
+      next unless pocket.clicked? && @current_card
+
+      @current_card.set_position(pocket.x, pocket.y)
+      @current_card.resize_small
+      @current_card.turn_left
+      @current_card = nil
     end
   end
 

@@ -15,11 +15,6 @@ module Card
     def update(opt = {})
       mouse_position opt
       handle_click
-
-      return unless @clicked
-
-      p 'clicked!'
-      p @mouse_x
     end
 
     def draw
