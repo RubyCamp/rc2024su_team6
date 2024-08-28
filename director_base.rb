@@ -9,7 +9,7 @@ module RC2024suTeam6
     # コンストラクタ
     def initialize
       @fonts = {
-        base: Gosu::Font.new(32, name: FONT_FILENAME),
+        base: Gosu::Font.new(40, name: FONT_FILENAME),
         title: Gosu::Font.new(80, name: FONT_FILENAME),
         score: Gosu::Font.new(64, name: FONT_FILENAME),
         judgement_result: Gosu::Font.new(128, name: FONT_FILENAME),
@@ -70,7 +70,7 @@ module RC2024suTeam6
     def convert_x_pos(x, text, font)
       case x
       when :left
-        return 0
+        return 30
       when :center
         return Config::WINDOW_WIDTH / 2 - (font.text_width(text) / 2)
       when :right
