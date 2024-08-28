@@ -33,6 +33,8 @@ module Line
         @pockets_right[i].set_position(x, y)
         x += 100
       end
+
+      @cards_left = []
     end
 
     def update(opt = {})
@@ -62,6 +64,7 @@ module Line
       @pockets_left.each(&:draw)
       @flag.draw
       @pockets_right.each(&:draw)
+      @cards_left.each(&:draw)
     end
 
     def clicked_pocket_left?
@@ -70,6 +73,30 @@ module Line
 
     def clicked_pocket_right?
       @_clicked_pocket_right
+    end
+
+    def add_card_left(card_info)
+      return false if @cards_left.size >= @puttable_num
+
+      pos = @pockets_left.size - @cards_left.size - 1
+      @cards_left.unshift Card::Presenter.new('A', 'hearts')
+      @cards_left[0].set_position(@pockets_left[pos].x, @pockets_left[pos].y)
+      @cards_left[0].turn_right
+      @cards_left[0].resize_small
+
+      true
+    end
+
+    def add_card_right(card_info)
+      return false if @cards_left.size >= @puttable_num
+
+      pos = @cards_left.size
+      @cards_left << Card::Presenter.new('A', 'hearts')
+      @cards_left.last.set_position(@pockets_right[pos].x, @pockets_right[pos].y)
+      @cards_left.last.turn_right
+      @cards_left.last.resize_small
+
+      true
     end
   end
 end

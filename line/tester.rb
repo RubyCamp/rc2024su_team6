@@ -1,6 +1,7 @@
 require 'gosu'
 require_relative 'presenter'
 require_relative '../test_window'
+require_relative '../card/info'
 
 module Line
   class Tester < TestWindow
@@ -26,21 +27,14 @@ module Line
     private
 
     def handle_key_press
-      # if Gosu.button_down?(Gosu::KB_LEFT)
-      #   @flag.set_position(@x - 100, @y)
-      # elsif Gosu.button_down?(Gosu::KB_RIGHT)
-      #   @flag.set_position(@x + 100, @y)
-      # elsif Gosu.button_down?(Gosu::KB_UP)
-      #   @flag.set_position(@x, @y)
-      # end
     end
 
     def handle_mouse_press
-      puts 'clicked pocket left' if @line.clicked_pocket_left?
+      @line.add_card_left Card::Info.new('A', 'hearts') if @line.clicked_pocket_left?
 
       return unless @line.clicked_pocket_right?
 
-      puts 'clicked pocket right'
+      @line.add_card_right Card::Info.new('A', 'hearts') if @line.clicked_pocket_right?
     end
   end
 
