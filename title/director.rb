@@ -1,9 +1,10 @@
 require 'gosu'
+require_relative 'config'
 
 module RC2024suTeam6
   module Title
     # タイトルシーンの担当ディレクタークラス
-    class Director < DirectorBase
+    class GameWindow < Gosu::Window
       # コンストラクタ
       def initialize
         super
@@ -24,7 +25,7 @@ module RC2024suTeam6
       # 1フレーム分の描画処理
       def draw
         @bg_img.draw(0, 0, 0)
-        draw_text("Ruby合宿2024夏 Example Game", :center, 280, font: :title, color: :red)
+        draw_text("BLACK LINE", :center, 280, font: :title, color: :black)
         draw_text("Push SPACE Key to start", :center, 350)
       end
     end

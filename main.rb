@@ -3,6 +3,9 @@ require_relative 'config'
 require_relative 'card/presenter'
 require_relative 'card-pocket/presenter'
 require_relative 'flag/presenter'
+require_relative 'title/director'
+require_relative 'rule/presenter'
+require_relative 'director_base'
 
 class GameWindow < Gosu::Window
   CARD_NUM = 6
