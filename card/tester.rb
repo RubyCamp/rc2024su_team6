@@ -1,12 +1,13 @@
 require 'gosu'
 require_relative 'presenter'
 require_relative '../test_window'
+require_relative 'info'
 module Card
   class Tester < TestWindow
     def initialize
       super
 
-      @card = Presenter.new('A', 'hart')
+      @card = Presenter.new Info.new('2', 'diamonds')
       @card.set_position(100, 100)
     end
 
