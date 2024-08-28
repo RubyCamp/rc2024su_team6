@@ -66,11 +66,25 @@ module Card
     end
 
     def draw_number_and_suit
-      # 数字画像をカードの中央に描画
-      @number_image.draw_rot((@x - 0.32 * @number_image.height)+@dx_number , (@y - @number_image.height / 2 * @scale)+@dy_number, 1, @angle, 0.5, 0.5, 0.25 * @scale, 0.25 * @scale)
-
-      # スート画像をカードの中央に描画
-      @suit_image.draw_rot((@x)+@dx_suit, (@y + @image.height / 8)+@dy_suit, 1, @angle, 0.5, 0.5, 0.70 * @scale, 0.70 * @scale)
+        # スケーリングに基づいて位置調整
+        number_x_adjustment = 0.32 * @number_image.width * @scale
+        number_y_adjustment = @number_image.height / 2 * @scale
+        suit_x_adjustment = @image.width / 100 * @scale
+        suit_y_adjustment = @image.height / 40 * @scale
+  
+        # 数字画像をカードの中央に描画
+        @number_image.draw_rot(
+          @x - number_x_adjustment + @dx_number * @scale,
+          @y - number_y_adjustment + @dy_number * @scale,
+          1, @angle, 0.5, 0.5, 0.25 * @scale, 0.25 * @scale
+        )
+  
+        # スート画像をカードの中央に描画
+        @suit_image.draw_rot(
+          @x + suit_x_adjustment + @dx_suit * @scale,
+          @y + suit_y_adjustment + @dy_suit * @scale,
+          1, @angle, 0.5, 0.5, 0.70 * @scale, 0.70 * @scale
+        )
     end
     
     # カードを左に向ける
@@ -78,17 +92,17 @@ module Card
       @angle = -90
       @dx_number = -15
       @dy_number = 73
-      @dx_suit = 15
-      @dy_suit = -13
+      @dx_suit = 3
+      @dy_suit = -2
     end
 
     # カードを右に向ける
     def turn_right
       @angle = 90
-      @dx_number = 75
-      @dy_number = 15
-      @dx_suit = -15
-      @dy_suit = -13
+      @dx_number = 70
+      @dy_number = 17
+      @dx_suit = -5
+      @dy_suit = -2
     end
 
     # カードを正面に向ける
