@@ -4,14 +4,12 @@ require_relative '../config'
 module RC2024suTeam6
   module Title
     # タイトルシーンの担当ディレクタークラス
-    class GameWindow < Gosu::Window
+    class Director < DirectorBase
       FONT_FILENAME = "DelaGothicOne-Regular.ttf" # 画面描画用フォントファイル名
       RIGHT_MARGIN = 10 # 文字列描画における右端寄せ指定の際の右側余白ピクセル数
       @@key_state = {}
       # コンストラクタ
       def initialize
-        super Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT
-        self.caption = 'Black Line'
         @bg_img = Gosu::Image.new("assets/images/title.png", tileable: true)
         @fonts = {
         base: Gosu::Font.new(32, name: FONT_FILENAME),
@@ -34,7 +32,7 @@ module RC2024suTeam6
         @bgm.play if @bgm && !@bgm.playing?
         # スペースキー押下でルール説明へ切り替えを行う
         if key_push?(Gosu::KB_SPACE)
-          transition(:game)
+          transition(:rule)
           @bgm.stop if @bgm && @bgm.playing?
         end
       end
@@ -107,6 +105,3 @@ module RC2024suTeam6
     end
   end
 end
-
-window = RC2024suTeam6::Title::GameWindow.new
-window.show

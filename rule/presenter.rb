@@ -5,7 +5,7 @@ module RC2024suTeam6
       # コンストラクタ
       def initialize
         super
-        @bg_img = Gosu::Image.new("images/rule.png", tileable: true)
+        @bg_img = Gosu::Image.new("assets/images/rule.png", tileable: true)
         @bgm = load_bgm("bgm2.mp3", 0.3)
       end
 
@@ -22,8 +22,8 @@ module RC2024suTeam6
       # 1フレーム分の描画処理
       def draw
         @bg_img.draw(0, 0, 0)
-        draw_text("ルール説明", :center, 280, font: :title, color: :black)
-        draw_text("Push SPACE Key to start", :center, 350)
+        draw_text("ルール説明", :center, 100, font: :title, color: :white)
       end
     end
   end
+end

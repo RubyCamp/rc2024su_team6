@@ -72,9 +72,9 @@ module RC2024suTeam6
       when :left
         return 0
       when :center
-        return MainWindow::WIDTH / 2 - (font.text_width(text) / 2)
+        return Config::WINDOW_WIDTH / 2 - (font.text_width(text) / 2)
       when :right
-        return MainWindow::WIDTH - font.text_width(text) - RIGHT_MARGIN
+        return Config::WINDOW_WIDTH - font.text_width(text) - RIGHT_MARGIN
       end
     end
 
