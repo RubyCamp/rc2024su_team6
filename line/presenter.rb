@@ -9,14 +9,18 @@ module Line
       @y = y
       @puttable_num = puttable_num
 
+      @_clicked_pocket_left = false
+      @_clicked_pocket_right = false
+
       # カードポケット
-      @pockets = []
+      @pockets_left = []
+      @pockets_right = []
 
       x = @x
       y = @y
       @puttable_num.times do |i|
-        @pockets << CardPocket::Presenter.new
-        @pockets[i].set_position(x, y)
+        @pockets_left << CardPocket::Presenter.new
+        @pockets_left[i].set_position(x, y)
         x += 100
       end
 
@@ -24,29 +28,48 @@ module Line
       @flag.set_position(x, y)
       x += 100
 
-      @puttable_num.upto(2 * @puttable_num) do |i|
-        @pockets << CardPocket::Presenter.new
-        @pockets[i].set_position(x, y)
+      @puttable_num.times do |i|
+        @pockets_right << CardPocket::Presenter.new
+        @pockets_right[i].set_position(x, y)
         x += 100
       end
     end
 
     def update(opt = {})
-      @pockets.each { |pocket| pocket.update(opt) }
+      @pockets_left.each { |pocket| pocket.update(opt) }
+      @pockets_right.each { |pocket| pocket.update(opt) }
 
-      @pockets.each do |pocket|
-        next unless pocket.clicked? && @current_card
+      @pockets_left.each do |pocket|
+        if pocket.clicked?
+          @_clicked_pocket_left = true
+          break
+        else
+          @_clicked_pocket_left = false
+        end
+      end
 
-        @current_card.set_position(pocket.x, pocket.y)
-        @current_card.resize_small
-        @current_card.turn_left
-        @current_card = nil
+      @pockets_right.each do |pocket|
+        if pocket.clicked?
+          @_clicked_pocket_right = true
+          break
+        else
+          @_clicked_pocket_right = false
+        end
       end
     end
 
     def draw
-      @pockets.each(&:draw)
+      @pockets_left.each(&:draw)
       @flag.draw
+      @pockets_right.each(&:draw)
+    end
+
+    def clicked_pocket_left?
+      @_clicked_pocket_left
+    end
+
+    def clicked_pocket_right?
+      @_clicked_pocket_right
     end
   end
 end

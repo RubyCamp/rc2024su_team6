@@ -13,9 +13,10 @@ module Line
     def update
       super
 
-      handle_key_press
-
       @line.update @opt
+
+      handle_key_press
+      handle_mouse_press
     end
 
     def draw
@@ -32,6 +33,14 @@ module Line
       # elsif Gosu.button_down?(Gosu::KB_UP)
       #   @flag.set_position(@x, @y)
       # end
+    end
+
+    def handle_mouse_press
+      puts 'clicked pocket left' if @line.clicked_pocket_left?
+
+      return unless @line.clicked_pocket_right?
+
+      puts 'clicked pocket right'
     end
   end
 
