@@ -6,5 +6,9 @@ module Card
       @number = number
       @suit = suit
     end
+
+    def to_s
+      "#{@number} of #{@suit}"
+    end
   end
 end

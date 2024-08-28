@@ -20,6 +20,7 @@ module Card
     end
 
     def initialize(info)
+      @info = info
       number = info.number
       suit = info.suit
 
