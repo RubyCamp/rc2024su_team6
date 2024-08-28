@@ -11,7 +11,7 @@ module Clickable
   end
 
   def mouse_over?
-    true
+    raise NotImplementedError
   end
 
   def clicked?
