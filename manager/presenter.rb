@@ -72,3 +72,37 @@ module Manager
     end
   end
 end
+
+module Manager
+  class Presenter
+    def init_game
+      @deal = [] # 手札
+      @pockets = [] # カードポケット内のカード
+    end
+
+    # 手札にあるcardを選択された状態にする
+    def activate_card(card)
+    end
+
+    # 手札にあるcardを選択されていない状態にする
+    def deactivate_card(card)
+    end
+
+    # カードポケット内のカードを更新する
+    def set_pocket(i, cards)
+    end
+
+    # 手札を更新する
+    def set_deal(cards)
+      @deal = cards
+    end
+
+    def update(opt = {})
+    end
+
+    private
+
+    def check_clicked_card
+    end
+  end
+end
