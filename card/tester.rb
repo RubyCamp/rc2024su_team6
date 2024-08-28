@@ -6,7 +6,7 @@ module Card
     def initialize
       super
 
-      @card = Presenter.new('6', 'diamonds')
+      @card = Presenter.new('2', 'diamonds')
       @card.set_position(100, 100)
     end
 
