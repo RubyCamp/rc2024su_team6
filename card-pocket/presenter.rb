@@ -6,7 +6,7 @@ module CardPocket
       @x = 0
       @y = 0
 
-      @image = Gosu::Image.new('assets/images/rect.png')
+      @image = Gosu::Image.new('assets/images/card.png')
     end
 
     def draw
