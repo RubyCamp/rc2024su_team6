@@ -9,7 +9,7 @@ module Flag
       @x = 0
       @y = 0
 
-      @image = Gosu::Image.new('assets/images/rect.png')
+      @image = Gosu::Image.new('flag/flag.png')
     end
 
     def update(opt = {})
@@ -23,7 +23,7 @@ module Flag
     end
 
     def draw
-      @image.draw @x, @y, 0, 1, 1, Gosu::Color::RED
+      @image.draw @x+20, @y+8, 0, 1, 1, Gosu::Color::WHITE
     end
 
     def set_position(x, y)

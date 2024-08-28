@@ -10,7 +10,7 @@ module CardPocket
       @x = 0
       @y = 0
 
-      @image = Gosu::Image.new('assets/images/rect.png')
+      @image = Gosu::Image.new('assets/images/blankcard.png')
     end
 
     def update(opt = {})
@@ -19,7 +19,7 @@ module CardPocket
     end
 
     def draw
-      @image.draw @x, @y, 0
+      @image.draw_rot(@x, @y, 0, 0, 0.5, 0.5, 0.75, 0.75)
     end
 
     def set_position(x, y)
