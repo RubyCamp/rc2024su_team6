@@ -10,5 +10,9 @@ module Card
     def to_s
       "#{@number} of #{@suit}"
     end
+
+    def ==(other)
+      @number == other.number && @suit == other.suit
+    end
   end
 end

@@ -21,6 +21,7 @@ module Deal
     def update
       super
       @deal.update @opt
+      handle_key_press
       handle_mouse_press
     end
 
@@ -29,6 +30,14 @@ module Deal
     end
 
     private
+
+    def handle_key_press
+      if Gosu.button_down? Gosu::KB_A
+        @deal.add Card::Info.new('4', 'hearts')
+      elsif Gosu.button_down? Gosu::KB_R
+        @deal.remove Card::Info.new('3', 'hearts')
+      end
+    end
 
     def handle_mouse_press
       return unless @deal.clicked_card
