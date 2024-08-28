@@ -14,7 +14,7 @@ module Manager
       x = 150
       y = 500
       CARD_NUM.times do |i|
-        @cards << Card::Presenter.new('A', 'hart')
+        @cards << Card::Presenter.new('A', 'hearts')
         @cards[i].set_position(x, y)
         x += 100
       end
