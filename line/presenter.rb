@@ -25,7 +25,7 @@ module Line
       end
 
       @flag = Flag::Presenter.new
-      @flag.set_position(x, y)
+      @flag.set_position(x - 30, y - 30)
       x += 100
 
       @puttable_num.times do |i|
