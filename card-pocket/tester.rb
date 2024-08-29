@@ -9,27 +9,42 @@ module CardPocket
 
       @x = 100
       @y = 100
-      @flag = Presenter.new
-      @flag.set_position(@x, @y)
+      @pocket = Presenter.new
+      @pocket.set_position(@x, @y)
+
+      @click_count = 0
     end
 
     def update
       super
+      opt = {
+        mx: self.mouse_x,
+        my: self.mouse_y
+      }
+      @pocket.update(opt)
       handle_key_press
+      handle_mouse_click
     end
 
     def draw
-      @flag.draw
+      @pocket.draw
     end
 
     private
 
     def handle_key_press
       if Gosu.button_down?(Gosu::KB_LEFT)
-        @flag.set_position(@x, @y)
+        @pocket.set_position(@x, @y)
       elsif Gosu.button_down?(Gosu::KB_RIGHT)
-        @flag.set_position(@x + 100, @y)
+        @pocket.set_position(@x + 100, @y)
       end
+    end
+
+    def handle_mouse_click
+      return unless @pocket.clicked?
+
+      puts @click_count
+      @click_count += 1
     end
   end
 

@@ -28,8 +28,10 @@ module CardPocket
     end
 
     def mouse_over?
-      @mouse_x > @x && @mouse_x < @x + @image.width &&
-        @mouse_y > @y && @mouse_y < @y + @image.height
+      x = @x * 0.4
+      y = @y * 0.4
+      @mouse_x > x && @mouse_x < x + @image.width &&
+        @mouse_y > y && @mouse_y < y + @image.height
     end
   end
 end
