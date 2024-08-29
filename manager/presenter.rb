@@ -1,78 +1,36 @@
 require 'gosu'
 require_relative '../config'
-require_relative '../card/presenter'
-require_relative '../card-pocket/presenter'
-require_relative '../flag/presenter'
+require_relative '../card/info'
+require_relative '../deal/presenter'
+require_relative '../line/presenter'
 
 module Manager
   class Presenter
     def initialize
-      # 手札
-      @cards = []
-      x = 150
-      y = 500
-      CARD_NUM.times do |i|
-        @cards << Card::Presenter.new('A', 'hearts')
-        @cards[i].set_position(x, y)
-        x += 100
-      end
+      card_infos = [
+        Card::Info.new('A', 'hearts'),
+        Card::Info.new('2', 'hearts'),
+        Card::Info.new('3', 'hearts')
+      ]
+
+      @line0 = Line::Presenter.new(puttable_num: 3, x: 100, y: 100)
+      @line1 = Line::Presenter.new(puttable_num: 3, x: 100, y: 200)
+      @line2 = Line::Presenter.new(puttable_num: 3, x: 100, y: 300)
+      @deal = Deal::Presenter.new card_infos: card_infos, x: 310, y: 500
     end
 
     def update(opt = {})
-      @cards.each { |card| card.update(opt) }
-
-      @cards.each do |card|
-        next unless card.clicked?
-
-        @current_card && @current_card.resize_middle
-        @current_card = card
-        @current_card.resize_large
-        break
-      end
-
-      @pockets.each do |pocket|
-        next unless pocket.clicked? && @current_card
-
-        @current_card.set_position(pocket.x, pocket.y)
-        @current_card.resize_small
-        @current_card.turn_left
-        @current_card = nil
-      end
+      @line0.update(opt)
+      @line1.update(opt)
+      @line2.update(opt)
+      @deal.update(opt)
     end
 
     def draw
-      @cards.each(&:draw)
-      @pockets.each(&:draw)
-      @flag.draw
-    end
-  end
-end
-
-module Manager
-  class Presenter
-    def init_game
-      @deal = [] # 手札
-      @pockets = [] # カードポケット内のカード
-    end
-
-    # 手札にあるcardを選択された状態にする
-    def activate_card(card)
-    end
-
-    # 手札にあるcardを選択されていない状態にする
-    def deactivate_card(card)
-    end
-
-    # カードポケット内のカードを更新する
-    def set_pocket(i, cards)
-    end
-
-    # 手札を更新する
-    def set_deal(cards)
-      @deal = cards
-    end
-
-    def update(opt = {})
+      @line0.draw
+      @line1.draw
+      @line2.draw
+      @deal.draw
     end
 
     private
