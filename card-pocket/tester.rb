@@ -17,7 +17,11 @@ module CardPocket
 
     def update
       super
-      @pocket.update
+      opt = {
+        mx: self.mouse_x,
+        my: self.mouse_y
+      }
+      @pocket.update(opt)
       handle_key_press
       handle_mouse_click
     end
